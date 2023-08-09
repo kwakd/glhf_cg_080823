@@ -5,13 +5,18 @@ public class playerController : MonoBehaviour
 {
     public TMP_Text speedText;
 
-    public double playerSpeed;
+    [SerializeField]private playerData myPlayerData;
 
-    public void Update()
+    private void start()
     {
-        speedText.text = playerSpeed + " mile/hour";
+        myPlayerData = new playerData();
+    }
 
-        if(Input.anyKeyDown)
+    private void Update()
+    {
+        speedText.text = myPlayerData.playerSpeed + " mile/hour";
+
+        if(Input.GetKeyDown("z") || Input.GetKeyDown("x"))
         {
             generateSpeed();
             Debug.Log("button pressed");
@@ -20,7 +25,7 @@ public class playerController : MonoBehaviour
 
     public void generateSpeed()
     {
-        playerSpeed += 1;
+        myPlayerData.playerSpeed += 1;
     }
 }
 
